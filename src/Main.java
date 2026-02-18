@@ -3,7 +3,7 @@
 public class Main {
     public static void main(String[] args) {
         System.out.println("Привет мир!");
-        int number = 2323232;
+        int number = 232323222;
         System.out.println(number);
     }
 }
