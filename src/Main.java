@@ -20,24 +20,24 @@ public class Main {
         }
         // Задача3
         int speed = 65;
-        if (speed > 60 ) {
+        if (speed > 60) {
             System.out.println("Если скорость " + speed + " ," + " то придется заплатить штраф");
-        }else{
+        } else {
             System.out.println("Если скорость " + speed + " ," + " можно ездить спокойно");
         }
         // Задача4
         int year = 25;
-        if (year >= 2 && year <=6) {
+        if (year >= 2 && year <= 6) {
             System.out.println("Если возраст человека равен " + year + ", " + " то ему нужно ходить в детский сад.");
         }
-        if ( year >= 7 && year <= 17) {
+        if (year >= 7 && year <= 17) {
             System.out.println("Если возраст человека равен " + year + ", " + " то ему нужно ходить в школу.");
         }
         if (year >= 18 && year <= 24) {
-            System.out.println("Если возраст человека равен " + year + ", " + " то его место в университете." );
+            System.out.println("Если возраст человека равен " + year + ", " + " то его место в университете.");
         }
-        if ( year > 24) {
-          System.out.println("Если возраст человека равен " + year + ", " + " то ему пора ходить на работу.");
+        if (year > 24) {
+            System.out.println("Если возраст человека равен " + year + ", " + " то ему пора ходить на работу.");
         }
         // Задача5
         int ageChildren = 22;
@@ -60,24 +60,24 @@ public class Main {
         }
         if (currentPassenger < seatedSeats) {
             System.out.println("Есть сидячие места");
-        }else{
+        } else {
             System.out.println("Есть стоячие места.");
         }
         //Задача 7
         int one = 1;
         int two = 2;
         int three = 3;
-        if ( one >= two && one >= three) {
+        if (one >= two && one >= three) {
             System.out.println(one + " Это самое больше число.");
         }
-        if (two >= one && two >=three) {
+        if (two >= one && two >= three) {
             System.out.println(two + " Это самое больше число.");
-        }else{
+        } else {
             System.out.println(three + " Это самое больше число.");
         }
-
     }
 }
+
 
 
 
