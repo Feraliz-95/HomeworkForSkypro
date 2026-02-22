@@ -55,7 +55,7 @@ public class Main {
         int seatedSeats = 60;
         int standingSeats = capacity - seatedSeats;
         int currentPassenger = 65;
-        if (currentPassenger >= capacity);{
+        if (currentPassenger >= capacity) {
             System.out.println("Вагон уже забит.");
         }
         if (currentPassenger < seatedSeats) {
