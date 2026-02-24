@@ -26,21 +26,21 @@ public class Main {
             System.out.println("Если скорость " + speed + " ," + " можно ездить спокойно");
         }
         // Задача4
-        int year = 25;
+        int year = 12;
         if (year >= 2 && year <= 6) {
             System.out.println("Если возраст человека равен " + year + ", " + " то ему нужно ходить в детский сад.");
         }
-        if (year >= 7 && year <= 17) {
+        else if (year >= 7 && year <= 17) {
             System.out.println("Если возраст человека равен " + year + ", " + " то ему нужно ходить в школу.");
         }
-        if (year >= 18 && year <= 24) {
+        else if (year >= 18 && year <= 24) {
             System.out.println("Если возраст человека равен " + year + ", " + " то его место в университете.");
         }
-        if (year > 24) {
+        else if (year > 24) {
             System.out.println("Если возраст человека равен " + year + ", " + " то ему пора ходить на работу.");
         }
         // Задача5
-        int ageChildren = 22;
+        int ageChildren = 4;
         if (ageChildren < 5) {
             System.out.println("Если возраст ребенка равен " + ageChildren + "," + " нельзя кататься на аттракционе.");
         }
@@ -49,34 +49,34 @@ public class Main {
         }
         if (ageChildren > 14) {
             System.out.println("Если возраст ребенка равен " + ageChildren + "," + " можно кататься на аттракционе без сопровождения взрослого.");
-        }
-        //Задача 6
-        int capacity = 102;
-        int seatedSeats = 60;
-        int standingSeats = capacity - seatedSeats;
-        int currentPassenger = 65;
-        if (currentPassenger >= capacity) {
-            System.out.println("Вагон уже забит.");
-        }
-        if (currentPassenger < seatedSeats) {
-            System.out.println("Есть сидячие места");
-        } else {
-            System.out.println("Есть стоячие места.");
-        }
-        //Задача 7
-        int one = 1;
-        int two = 2;
-        int three = 3;
-        if (one >= two && one >= three) {
-            System.out.println(one + " Это самое больше число.");
-        }
-        if (two >= one && two >= three) {
-            System.out.println(two + " Это самое больше число.");
-        } else {
-            System.out.println(three + " Это самое больше число.");
+            //Задача 6
+            int capacity = 102;
+            int seatedSeats = 60;
+            int currentPassenger = 35;
+            if (currentPassenger >= capacity) {
+                System.out.println("Вагон уже забит.");
+            } else if (currentPassenger < seatedSeats) {
+            }
+                System.out.println("Есть сидячие места");
+            } else {
+                System.out.println("Есть стоячие места.");
+            }
+            //Задача 7
+            int one = 1;
+            int two = 2;
+            int three = 3;
+            if (one >= two && one >= three) {
+                System.out.println(one + " Это самое больше число.");
+            }
+            if (two >= one && two >= three) {
+                System.out.println(two + " Это самое больше число.");
+            } else {
+                System.out.println(three + " Это самое больше число.");
+            }
         }
     }
-}
+
+
 
 
 
