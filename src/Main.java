@@ -60,7 +60,7 @@ public class Main {
             case 3:
             case 4:
             case 5:
-                System.out.println("Весна");;
+                System.out.println("Весна");
                 break;
             case 6:
             case 7:
