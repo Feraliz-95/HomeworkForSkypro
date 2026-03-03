@@ -13,10 +13,10 @@ public class Main {
         }
         //Задача 2
         int clientOs1 = 1;
-        int clientDeviceYear = 2012;
-        if (clientOs1 == 0 && clientDeviceYear < 2016) {
+        int clientDeviceYear = 2015;
+        if (clientOs1 == 0 && clientDeviceYear <= 2015) {
             System.out.println("Установите облегченную версию приложения для iOS по ссылке.");
-        } else if (clientOs1 == 1 && clientDeviceYear < 2015) {
+        } else if (clientOs1 == 1 && clientDeviceYear <= 2015) {
             System.out.println("Установите облегченную версию приложения для Android по ссылке.");
         }
         if (clientOs1 == 0 && clientDeviceYear > 2015) {
@@ -32,17 +32,20 @@ public class Main {
             System.out.println(year + " год не является високосным");
         }
         //Задача 4
-        int deliveryDistance = 60;
-        int deliveryDay = 1;
-        if (deliveryDistance > 100) {
-            System.out.println("Нет доставки");
-            return;
-        } else if (deliveryDistance > 20) {
-            deliveryDay++;
-        } else if (deliveryDistance > 60){
-            deliveryDay++;
+        int deliveryDistance = 95; //
+
+        int days;
+
+        if (deliveryDistance <= 20) {
+            days = 1;
+        } else if (deliveryDistance <= 60) {
+            days = 2;
+        } else if (deliveryDistance <= 100) {
+            days = 3;
+        } else {
+            days = 0;
         }
-        System.out.println("Доставка займет " + deliveryDay + " суток");
+        System.out.println("Потребуется дней: " + days);
 
         //Задача 5
 
@@ -77,6 +80,7 @@ public class Main {
 
         }
     }
+
 }
 
 
