@@ -9,7 +9,7 @@ public class Main {
         } else if (clientOs == 1) {
             System.out.println("Установите версию приложения для Android по ссылке.");
         } else {
-            System.out.println("Неизвестная операционная система.");
+
         }
         //Задача 2
         int clientOs1 = 1;
@@ -19,6 +19,7 @@ public class Main {
         } else if (clientOs1 == 1 && clientDeviceYear <= 2015) {
             System.out.println("Установите облегченную версию приложения для Android по ссылке.");
         }
+ Homework-4
         if (clientOs1 == 0 && clientDeviceYear > 2015) {
             System.out.println("Установите версию приложения для iOS по ссылке.");
         } else if (clientOs1 == 1 && clientDeviceYear > 2015) {
@@ -82,6 +83,7 @@ public class Main {
     }
 
 }
+
 
 
 
