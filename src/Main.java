@@ -3,6 +3,10 @@
 public class Main {
     public static void main(String[] args) {
         //Задача 1
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(i);
+
         int clientOs = 0;
         if (clientOs == 0) {
             System.out.println("Установите версию приложения для iOS по ссылке.");
@@ -10,8 +14,14 @@ public class Main {
             System.out.println("Установите версию приложения для Android по ссылке.");
         } else {
 
+
         }
+
         //Задача 2
+
+        for (int num = 10; num > 0; num--) {
+            System.out.println(num);
+
         int clientOs1 = 1;
         int clientDeviceYear = 2015;
         if (clientOs1 == 0 && clientDeviceYear <= 2015) {
@@ -19,70 +29,58 @@ public class Main {
         } else if (clientOs1 == 1 && clientDeviceYear <= 2015) {
             System.out.println("Установите облегченную версию приложения для Android по ссылке.");
         }
- Homework-4
+ 
         if (clientOs1 == 0 && clientDeviceYear > 2015) {
             System.out.println("Установите версию приложения для iOS по ссылке.");
         } else if (clientOs1 == 1 && clientDeviceYear > 2015) {
             System.out.println("Установите версию приложения для Android по ссылке.");
+
         }
         //Задача 3
-        int year = 2021;
-        if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
-            System.out.println(year + " год является високосным");
-        } else {
-            System.out.println(year + " год не является високосным");
+        for (int num1 = 0; num1 <= 17; num1 += 2) {
+            System.out.println(num1);
         }
         //Задача 4
-        int deliveryDistance = 95; //
-
-        int days;
-
-        if (deliveryDistance <= 20) {
-            days = 1;
-        } else if (deliveryDistance <= 60) {
-            days = 2;
-        } else if (deliveryDistance <= 100) {
-            days = 3;
-        } else {
-            days = 0;
+        for (int num2 = 10; num2 >= -10; num2--) {
+            System.out.println(num2);
         }
-        System.out.println("Потребуется дней: " + days);
-
         //Задача 5
-
-        int monthNumber = 6;
-        if (monthNumber < 1 || monthNumber > 12) {
-            System.out.println("Некорректный номер месяца");
-            return;
+        for (int leapYear = 1904; leapYear < 2096; leapYear += 4) {
+            System.out.println(leapYear + " год является високосным");
         }
-        switch (monthNumber) {
-            case 12:
-            case 1:
-            case 2:
-                System.out.println("Зима");
-                break;
-            case 3:
-            case 4:
-            case 5:
-                System.out.println("Весна");
-                break;
-            case 6:
-            case 7:
-            case 8:
-                System.out.println("Лето");
-                break;
-            case 9:
-            case 10:
-            case 11:
-                System.out.println("Осень");
-                break;
-            default:
-                System.out.println("Некорректный номер месяца");
-
+        //Задача 6
+        for (int num3 = 7; num3 <= 98; num3 += 7) {
+            System.out.println(num3);
+        }
+        //Задача 7
+        for (int num4 = 1; num4 <= 512; num4 *= 2) {
+            System.out.println(num4);
+        }
+        //Задача 8
+        int salary = 29000;
+        int total = 0;
+        for (int i  = 0; i < 12; i++) {
+            total = total + salary;
+            System.out.println("Месяц " + i +","+ "сумма накоплений равна " + total + " рублей");
+        }
+       // Задача 9
+        int salary1 = 29000;
+        int total1 = 0;
+        for (int i = 0; i < 12; i++) {
+            total1 = total1 + total1/100;
+            total1 = total1 + salary1;
+            System.out.println("Месяц " + i + "," + "сумма накоплений равна " + total1 + " рублей");
+        }
+        //Задача 10
+        int num = 2;
+        int result;
+        for (int i = 1; i <= 10; i++) {
+            result = num * i;
+            System.out.println(num + "*" + i + "=" + result);
+        }
         }
     }
 
-}
 
 
 
