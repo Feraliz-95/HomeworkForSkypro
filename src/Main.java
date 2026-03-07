@@ -3,13 +3,38 @@
 public class Main {
     public static void main(String[] args) {
         //Задача 1
+
         for (int i = 1; i <= 10; i++) {
             System.out.println(i);
+
+        int clientOs = 0;
+        if (clientOs == 0) {
+            System.out.println("Установите версию приложения для iOS по ссылке.");
+        } else if (clientOs == 1) {
+            System.out.println("Установите версию приложения для Android по ссылке.");
+        } else {
+
+
         }
 
         //Задача 2
+
         for (int num = 10; num > 0; num--) {
             System.out.println(num);
+
+        int clientOs1 = 1;
+        int clientDeviceYear = 2015;
+        if (clientOs1 == 0 && clientDeviceYear <= 2015) {
+            System.out.println("Установите облегченную версию приложения для iOS по ссылке.");
+        } else if (clientOs1 == 1 && clientDeviceYear <= 2015) {
+            System.out.println("Установите облегченную версию приложения для Android по ссылке.");
+        }
+ 
+        if (clientOs1 == 0 && clientDeviceYear > 2015) {
+            System.out.println("Установите версию приложения для iOS по ссылке.");
+        } else if (clientOs1 == 1 && clientDeviceYear > 2015) {
+            System.out.println("Установите версию приложения для Android по ссылке.");
+
         }
         //Задача 3
         for (int num1 = 0; num1 <= 17; num1 += 2) {
@@ -55,6 +80,7 @@ public class Main {
         }
         }
     }
+
 
 
 
