@@ -1,5 +1,5 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.text.DecimalFormat;
+
 public class Main {
     public static void main(String[] args) {
         // Задача 1
@@ -33,20 +33,20 @@ public class Main {
         System.out.println("Количество дней равно - " + day);
 
         // Задача 3.2
-        int balance = 1100;
+        int balance = 1000;
         int parkingDay = 0;
         int i = 0;
         for (; i < balance; i++) {
             parkingDay++;
-            balance -= 100;
 
             if (parkingDay % 5 == 0) {
                 continue;
-
             }
-            System.out.println("Количество дней равно - " + parkingDay);
+            balance -= 100;
         }
+        System.out.println("Количество дней равно - " + parkingDay);
         //Задача 4
+        DecimalFormat df = new DecimalFormat("0.00");
         int month = 0;
         double total = 0;
         while (total < 12_000_000) {
@@ -54,14 +54,11 @@ public class Main {
             total = total + 15_000;
             if (month % 6 == 0) {
                 total = total * 1.07;
-                {
-                    System.out.printf("Месяц %d Итого %.2f \n", month, total);
-                }
                 if (total >= 12_000_000) {
                     break;
                 }
-
             }
+            System.out.println("Месяц " + month + " Итого:" + df.format(total));
         }
         //Задача 5
         int charge = 20;
