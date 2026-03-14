@@ -2,18 +2,24 @@ import java.text.DecimalFormat;
 
 public class Main {
     public static void main(String[] args) {
-        // Задача 1
-        int firstFriday = 3;
-        for (int i = 1; i <= 31; i++) {
-            if ((i - firstFriday) % 7 == 0) {
-                System.out.println("Сегодня пятница, " + i + "-е число. Необходимо подготовить отчет.");
-            }
+
+        //Задача 1
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(i);
+
+        int clientOs = 0;
+        if (clientOs == 0) {
+            System.out.println("Установите версию приложения для iOS по ссылке.");
+        } else if (clientOs == 1) {
+            System.out.println("Установите версию приложения для Android по ссылке.");
+        } else {
+
+
+
         }
         //Задача 2
-        int distanceTraveled = 0;
-        do {
-            System.out.println("Держитесь! Осталось " + distanceTraveled + " метров ");
-            distanceTraveled += 500;
+
         }
         while (distanceTraveled <= 42195);
         //Задача 2 вариан с циклом for
@@ -81,6 +87,7 @@ public class Main {
         }
     }
 }
+
 
 
 
