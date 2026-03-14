@@ -1,86 +1,65 @@
-import java.text.DecimalFormat;
+
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        // Задача 1
-        int firstFriday = 3;
-        for (int i = 1; i <= 31; i++) {
-            if ((i - firstFriday) % 7 == 0) {
-                System.out.println("Сегодня пятница, " + i + "-е число. Необходимо подготовить отчет.");
-            }
-        }
+        //Задача 1
+        int[] arr = new int[] {1, 2, 3};
+        //Задача 1.1
+        double [] array = {1.57,7.654, 9.986};
+        //Задача 1.2
+        int[] arrays = new int[] {15, 26, 44, 92, 100};
         //Задача 2
-        int distanceTraveled = 0;
-        do {
-            System.out.println("Держитесь! Осталось " + distanceTraveled + " метров ");
-            distanceTraveled += 500;
+        System.out.println(Arrays.toString(arr));
+        System.out.println(Arrays.toString(array));
+        System.out.println(Arrays.toString(arrays));
+
+        //Задача 3
+        for (int i = arr.length - 1; i >= 0; i--) {
+            if (i == 0) {
+                System.out.print(arr[i]);
+            } else {
+                System.out.print(arr[i] + ", ");
+            }
         }
-        while (distanceTraveled <= 42195);
-        //Задача 2 вариан с циклом for
-        for (int i = 0; i <= 42195; i += 500) {
-            System.out.println("Держитесь! Осталось " + i + " метров ");
-        }
+        System.out.println();
         //Задача 3.1
-        int budget = 1000;
-        int day = 0;
-        while (budget > 0) {
-            day++;
-            if (day % 5 == 0) {
-                continue;
+        for (int i = array.length - 1; i >= 0; i--) {
+            if (i == 0) {
+                System.out.print(array[i]);
+            } else {
+                System.out.print(array[i] + ", ");
             }
-            budget -= 100;
         }
-        System.out.println("Количество дней равно - " + day);
+        System.out.println();
 
-        // Задача 3.2
-        int balance = 1000;
-        int parkingDay = 0;
-        int i = 0;
-        for (; i < balance; i++) {
-            parkingDay++;
-
-            if (parkingDay % 5 == 0) {
-                continue;
+        //Задача 3.2
+        for (int i = arrays.length - 1; i >= 0; i--) {
+            if (i == 0) {
+                System.out.print(arrays[i]);
+            } else {
+                System.out.print(arrays[i] + ", ");
             }
-            balance -= 100;
         }
-        System.out.println("Количество дней равно - " + parkingDay);
+        System.out.println();
+
         //Задача 4
-        DecimalFormat df = new DecimalFormat("0.00");
-        int month = 0;
-        double total = 0;
-        while (total < 12_000_000) {
-            month++;
-            total = total + 15_000;
-            if (month % 6 == 0) {
-                total = total * 1.07;
-                if (total >= 12_000_000) {
-                    break;
-                }
+        int [] num = {1, 2, 3, 5};
+        for (int i = 0; i < num.length; i++) {
+            if (num[i] % 2 !=0) {
+                num[i]++;
+                System.out.print(num[i] + " ");
+
             }
-            System.out.println("Месяц " + month + " Итого:" + df.format(total));
         }
-        //Задача 5
-        int charge = 20;
-        int minute = 0;
-        int overheats = 0;
-        while (charge < 100 && overheats <=3) {
-            minute++;
-            charge += 2;
-            if (minute % 10 == 0) {
-                overheats++;
-                minute++;
-                continue;
-            }
-            System.out.println("Зарядка прекращена. Текущий заряд: " + charge + " %.");
-            if (overheats == 3) {
-                break;
-            }
-            System.out.println("Время зарядки составило " + minute + " минут.");
+
 
         }
-    }
+
 }
+
+
+
 
 
 
