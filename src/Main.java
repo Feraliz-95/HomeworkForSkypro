@@ -1,7 +1,8 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.text.DecimalFormat;
+
 public class Main {
     public static void main(String[] args) {
+
         //Задача 1
 
         for (int i = 1; i <= 10; i++) {
@@ -15,71 +16,80 @@ public class Main {
         } else {
 
 
-        }
 
+        }
         //Задача 2
 
-        for (int num = 10; num > 0; num--) {
-            System.out.println(num);
+        }
+        while (distanceTraveled <= 42195);
+        //Задача 2 вариан с циклом for
+        for (int i = 0; i <= 42195; i += 500) {
+            System.out.println("Держитесь! Осталось " + i + " метров ");
+        }
+        //Задача 3.1
+        int budget = 1000;
+        int day = 0;
+        while (budget > 0) {
+            day++;
+            if (day % 5 == 0) {
+                continue;
+            }
+            budget -= 100;
+        }
+        System.out.println("Количество дней равно - " + day);
 
-        int clientOs1 = 1;
-        int clientDeviceYear = 2015;
-        if (clientOs1 == 0 && clientDeviceYear <= 2015) {
-            System.out.println("Установите облегченную версию приложения для iOS по ссылке.");
-        } else if (clientOs1 == 1 && clientDeviceYear <= 2015) {
-            System.out.println("Установите облегченную версию приложения для Android по ссылке.");
-        }
- 
-        if (clientOs1 == 0 && clientDeviceYear > 2015) {
-            System.out.println("Установите версию приложения для iOS по ссылке.");
-        } else if (clientOs1 == 1 && clientDeviceYear > 2015) {
-            System.out.println("Установите версию приложения для Android по ссылке.");
+        // Задача 3.2
+        int balance = 1000;
+        int parkingDay = 0;
+        int i = 0;
+        for (; i < balance; i++) {
+            parkingDay++;
 
+            if (parkingDay % 5 == 0) {
+                continue;
+            }
+            balance -= 100;
         }
-        //Задача 3
-        for (int num1 = 0; num1 <= 17; num1 += 2) {
-            System.out.println(num1);
-        }
+        System.out.println("Количество дней равно - " + parkingDay);
         //Задача 4
-        for (int num2 = 10; num2 >= -10; num2--) {
-            System.out.println(num2);
+        DecimalFormat df = new DecimalFormat("0.00");
+        int month = 0;
+        double total = 0;
+        while (total < 12_000_000) {
+            month++;
+            total = total + 15_000;
+            if (month % 6 == 0) {
+                total = total * 1.07;
+                if (total >= 12_000_000) {
+                    break;
+                }
+            }
+            System.out.println("Месяц " + month + " Итого:" + df.format(total));
         }
         //Задача 5
-        for (int leapYear = 1904; leapYear < 2096; leapYear += 4) {
-            System.out.println(leapYear + " год является високосным");
-        }
-        //Задача 6
-        for (int num3 = 7; num3 <= 98; num3 += 7) {
-            System.out.println(num3);
-        }
-        //Задача 7
-        for (int num4 = 1; num4 <= 512; num4 *= 2) {
-            System.out.println(num4);
-        }
-        //Задача 8
-        int salary = 29000;
-        int total = 0;
-        for (int i  = 0; i < 12; i++) {
-            total = total + salary;
-            System.out.println("Месяц " + i +","+ "сумма накоплений равна " + total + " рублей");
-        }
-       // Задача 9
-        int salary1 = 29000;
-        int total1 = 0;
-        for (int i = 0; i < 12; i++) {
-            total1 = total1 + total1/100;
-            total1 = total1 + salary1;
-            System.out.println("Месяц " + i + "," + "сумма накоплений равна " + total1 + " рублей");
-        }
-        //Задача 10
-        int num = 2;
-        int result;
-        for (int i = 1; i <= 10; i++) {
-            result = num * i;
-            System.out.println(num + "*" + i + "=" + result);
-        }
+        int charge = 20;
+        int minute = 0;
+        int overheats = 0;
+        while (charge < 100 && overheats <=3) {
+            minute++;
+            charge += 2;
+            if (minute % 10 == 0) {
+                overheats++;
+                minute++;
+                continue;
+            }
+            System.out.println("Зарядка прекращена. Текущий заряд: " + charge + " %.");
+            if (overheats == 3) {
+                break;
+            }
+            System.out.println("Время зарядки составило " + minute + " минут.");
+
         }
     }
+}
+
+
+
 
 
 
