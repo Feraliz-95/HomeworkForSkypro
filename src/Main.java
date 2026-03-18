@@ -3,6 +3,7 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
+
         //Задача 1
         int[] arr = new int[] {1, 2, 3};
         //Задача 1.1
@@ -21,6 +22,7 @@ public class Main {
             } else {
                 System.out.print(arr[i] + ", ");
             }
+
         }
         System.out.println();
         //Задача 3.1
@@ -57,8 +59,6 @@ public class Main {
         }
 
 }
-
-
 
 
 
