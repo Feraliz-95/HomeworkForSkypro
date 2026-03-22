@@ -20,14 +20,12 @@ public class Main {
 
             double average = sum / (double) inputArray1.length;
 
-
-            double[] outputArray1 = {sum, max, min, average};
-
             System.out.println("inputArray1: ");
             for (int payment1 : inputArray1) {
                 System.out.print(payment1 + " ");
             }
             System.out.println();
+            double[] outputArray1 = {sum, max, min, average};
 
             System.out.println("outputArray1: ");
             for (double result : outputArray1) {
@@ -43,9 +41,10 @@ public class Main {
                 float tax = salary * 0.13f;
                 outputArray2[index] = tax;
                 index++;
-                System.out.println(Arrays.toString(inputArray2));
-                System.out.println(tax);
             }
+            System.out.println(Arrays.toString(inputArray2));
+            System.out.println(Arrays.toString(outputArray2));
+
             //Задача 3
             System.out.println("Задача 3");
             int[] inputArray3 = {3000, 4500, 6000, 5300, 7000};
@@ -59,38 +58,36 @@ public class Main {
                 }
                 index1++;
             }
-            for (boolean flag : outputArray3) {
-                System.out.println(Arrays.toString(inputArray3));
-                System.out.println(flag);
-            }
-
+            System.out.println(Arrays.toString(inputArray3));
+            System.out.println(Arrays.toString(outputArray3));
             //Задача 4
             System.out.println("Задача 4");
             int[] inputArray4 = {100, 50, 25, -10, 30};
-            boolean outputArray4 = true;
+            boolean[] outputArray4 = {true};
             for (int balance : inputArray4) {
                 if (balance < 0) {
-                    outputArray4 = false;
+                    outputArray4 = new boolean[]{false};
                     break;
                 }
             }
             System.out.println(Arrays.toString(inputArray4));
-            System.out.println(outputArray4);
+            System.out.println(Arrays.toString(outputArray4));
+
 
             //Задача 5
             System.out.println("Задача 5");
             int[] inputArray5 = {100, -50, 200, 0, 300};
 
-            int outputArray5 = 0;
+            int[] outputArray5 = {0};
 
             // Цикл for-each
             for (int profit : inputArray5) {
                 if (profit > 0) {
-                    outputArray5++;
+                    outputArray5[0]++;
                 }
             }
             System.out.println(Arrays.toString(inputArray5));
-            System.out.println(outputArray5);
+            System.out.println(Arrays.toString(outputArray5));
         }
     }
 }
