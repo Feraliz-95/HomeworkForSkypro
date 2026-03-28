@@ -2,7 +2,9 @@
 import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
+        Homework-9
         System.out.println("Задача 1");
+ 
         String firstName = "Ivan";
         String middleName = "Ivanovich";
         String lastName = "Ivanov";
@@ -19,6 +21,26 @@ public class Main {
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
