@@ -23,26 +23,29 @@ public class Main {
     }
 
     //Задача 3
-    public static void distanceOfDays(int deliveryDistance) {
-        int days = 1;
-        if (deliveryDistance < 20) {
-            System.out.println("Потребуется дней: " + days);
-        } else if (deliveryDistance >= 20 && deliveryDistance < 60) {
-            days += 1;
-            System.out.println("Потребуется дней: " + days);
-        } else if  (deliveryDistance >= 60 && deliveryDistance < 100) {
-            days += 2;
-            System.out.println("Потребуется дней: " + days);
+    public static int calculationOfDeliveryDays(int deliveryDistance) {
+        int deliveryDays = 1;
+        if (deliveryDistance <= 20) {
+        } else if (deliveryDistance <= 60) {
+            deliveryDays += deliveryDays;
+        } else if (deliveryDistance <= 100) {
+            deliveryDays = deliveryDays + 2;
         } else {
-            System.out.println("Свыше 100 км доставки нет.");
+            System.out.println("Доставка недоступна на расстояние более 100 км");
+            return -1;
         }
+        System.out.println("Потребуется дней: " + deliveryDays);
+        return deliveryDays;
     }
+
+
+
     public static void main(String[] args) {
-    leapYears(2024);
-    softwareDefinition(2017, 1);
-    distanceOfDays(102);
-        }
+        leapYears(2024);
+        softwareDefinition(2017, 1);
+        calculationOfDeliveryDays(54);
     }
+}
 
 
 
