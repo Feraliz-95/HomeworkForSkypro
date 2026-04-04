@@ -1,4 +1,5 @@
 public class Main {
+ Homework-10
     //Задача 1
     public static void leapYears(int year) {
         if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
@@ -46,6 +47,25 @@ public class Main {
         calculationOfDeliveryDays(54);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
