@@ -1,26 +1,55 @@
-
-import java.util.Arrays;
 public class Main {
+ Homework-10
+    //Задача 1
+    public static void leapYears(int year) {
+        if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+            System.out.println(year + " год является високосным");
+        } else {
+            System.out.println(year + " год не является високосным");
+        }
+    }
+
+    //Задача 2
+    public static void softwareDefinition(int clientDeviceYear, int clientOs1) {
+        if (clientOs1 == 0 && clientDeviceYear <= 2015) {
+            System.out.println("Установите облегченную версию приложения для iOS по ссылке.");
+        } else if (clientOs1 == 1 && clientDeviceYear <= 2015) {
+            System.out.println("Установите облегченную версию приложения для Android по ссылке.");
+        }
+        if (clientOs1 == 0 && clientDeviceYear > 2015) {
+            System.out.println("Установите версию приложения для iOS по ссылке.");
+        } else if (clientOs1 == 1 && clientDeviceYear > 2015) {
+            System.out.println("Установите версию приложения для Android по ссылке.");
+        }
+    }
+
+    //Задача 3
+    public static int calculationOfDeliveryDays(int deliveryDistance) {
+        int deliveryDays = 1;
+        if (deliveryDistance <= 20) {
+        } else if (deliveryDistance <= 60) {
+            deliveryDays += deliveryDays;
+        } else if (deliveryDistance <= 100) {
+            deliveryDays = deliveryDays + 2;
+        } else {
+            System.out.println("Доставка недоступна на расстояние более 100 км");
+            return -1;
+        }
+        System.out.println("Потребуется дней: " + deliveryDays);
+        return deliveryDays;
+    }
+
+
+
     public static void main(String[] args) {
-        Homework-9
-        System.out.println("Задача 1");
- 
-        String firstName = "Ivan";
-        String middleName = "Ivanovich";
-        String lastName = "Ivanov";
-        String fullName = lastName + " " + firstName + " " + middleName;
-        System.out.println("Ф.И.О. сотрудника — " + fullName);
-
-        System.out.println("Задача 2");
-        System.out.println("Данные Ф. И. О. сотрудника для заполнения отчета — " + fullName.toUpperCase());
-
-        System.out.println("Задача 3");
-        String fullName1 = "Иванов Семён Семёнович";
-        String correctedFullName = fullName1.replace("ё", "e");
-        System.out.println("Данные Ф. И. О. сотрудника — " + correctedFullName);
-
+        leapYears(2024);
+        softwareDefinition(2017, 1);
+        calculationOfDeliveryDays(54);
     }
 }
+
+
+
 
 
 
