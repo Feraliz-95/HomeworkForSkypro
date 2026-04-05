@@ -1,4 +1,5 @@
 public class Main {
+Homework-11
     public static void main(String[] args) {
         Author author = new Author("Лев", "Толстой");
         Book book = new Book("Война и мир", author, 1869);
@@ -20,13 +21,29 @@ public class Main {
         System.out.println("book2 = " + book2);
         System.out.println("book3 = " + book3);
         System.out.println("book4 = " + book4);
-
-
-
     }
 
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
