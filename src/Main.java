@@ -15,10 +15,12 @@ public class Main {
         Book book2 = new Book("Идиот", author1, 1869);
         Book book3 = new Book("Портрет Дориана Грея", author2, 1890);
         Book book4 = new Book("Счастливый принц", author2, 1888);
+        book1.setPublicationYear(1850);
         System.out.println("book1 = " + book1);
         System.out.println("book2 = " + book2);
         System.out.println("book3 = " + book3);
         System.out.println("book4 = " + book4);
+
 
 
     }

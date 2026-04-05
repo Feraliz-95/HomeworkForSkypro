@@ -3,6 +3,7 @@ public class Author {
     private String lastName;
 
 
+
     // Конструктор, заполняющий все поля
     public Author(String firstName, String lastName) {
         this.firstName = firstName;
