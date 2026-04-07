@@ -18,13 +18,18 @@ public class Main {
 
 
         System.out.println("Задание 3");
-        Order o1 = new Order("Иван", new Product[]{product1, product2, product3});
-        Order o2 = new Order("Петр", new Product[]{product2, product5, product4});
-        Order o3 = new Order("Иван", new Product[]{product4, product3, product1});
-        System.out.println("Order 1: " + o1);
-        System.out.println("Order 2: " + o2);
-        System.out.println("Order 3: " + o3);
-        System.out.println(product1.equals(product3));
+
+
+        Product[] basket1 = {product1, product2};
+        Product[] basket2 = {product1, product3};
+        Order order1 = new Order("Customer1", basket1);
+        Order order2 = new Order("Customer2", basket2);
+
+        System.out.println(order1);
+        System.out.println(order2);
+
+        System.out.println("order1 equals order2: " + order1.equals(order2));
+
 
     }
 

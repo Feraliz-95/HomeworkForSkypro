@@ -48,5 +48,6 @@ class Order {
         int result = Objects.hashCode(customer);
         result = 31 * result + Arrays.hashCode(basket);
         return result;
+
     }
 }
