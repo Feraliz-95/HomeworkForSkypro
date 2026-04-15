@@ -1,5 +1,6 @@
 
 public class Main {
+Homework-11
     public static void main(String[] args) {
         System.out.println("Задание 1");
         Product product1 = new Product(1, "Монитор", 25000, "Мониторы");
@@ -20,10 +21,6 @@ public class Main {
         System.out.println("Задание 3");
 
 
-        Product[] basket1 = {product1, product2};
-        Product[] basket2 = {product1, product3};
-        Order order1 = new Order("Customer1", basket1);
-        Order order2 = new Order("Customer2", basket2);
 
         System.out.println(order1);
         System.out.println(order2);
@@ -31,7 +28,23 @@ public class Main {
         System.out.println("order1 equals order2: " + order1.equals(order2));
 
 
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
