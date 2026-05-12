@@ -1,12 +1,9 @@
+package org.skypro.skyshop;
 import org.skypro.skyshop.basket.ProductBasket;
 import org.skypro.skyshop.product.Product;
-
-public class Main {
-
+public class App {
     public static void main(String[] args) {
-
-
-                // Создаем продукцию
+        // Создаем продукцию
                 Product apple = new Product("Яблоко", 100);
                 Product banana = new Product("Банан", 150);
                 Product orange = new Product("Апельсин", 200);
@@ -27,16 +24,14 @@ public class Main {
 
                 // Печатаем содержимое корзины
                 basket.printContents();
-                System.out.println("Корзина содержит яблоко: " + basket.containsProduct("Яблоко"));
-                System.out.println("Корзина содержит ананас: " + basket.containsProduct("Ананас"));
+        System.out.println("Корзина содержит яблоко: " + basket.containsProduct("Яблоко"));
+        System.out.println("Корзина содержит ананас: " + basket.containsProduct("Ананас"));
 
-                // Очищаем корзину
-                basket.clearBasket();
-                System.out.println("Корзина очищена.");
+        // Очищаем корзину
+        basket.clearBasket();
+        System.out.println("Корзина очищена.");
 
-                // Печатаем содержимое корзины после очистки
-                basket.printContents();
+        // Печатаем содержимое корзины после очистки
+        basket.printContents();
             }
         }
-
-
