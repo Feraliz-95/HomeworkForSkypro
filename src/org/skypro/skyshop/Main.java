@@ -1,12 +1,11 @@
+package org.skypro.skyshop;
+
 import org.skypro.skyshop.basket.ProductBasket;
 import org.skypro.skyshop.product.DiscountedProduct;
 import org.skypro.skyshop.product.FixPriceProduct;
 import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.SimpleProduct;
-
 public class Main {
-
-
     public static void main(String[] args) {
         Product product1 = new SimpleProduct("Яблоко", 50);
         Product product2 = new DiscountedProduct("Банан", 70, 10);
@@ -53,5 +52,3 @@ public class Main {
         System.out.println("Есть ли яблоко в корзине: " + basket.containsProduct("Яблоко"));
     }
 }
-
-
