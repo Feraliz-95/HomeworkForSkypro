@@ -7,6 +7,7 @@ import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.SimpleProduct;
 
 public class Main {
+
     public static void main(String[] args) {
 
 
@@ -62,6 +63,7 @@ public class Main {
     }
 
 
+
     private static void printSearchResults(Searchable[] results) {
         for (Searchable result : results) {
             if (result != null) {
@@ -72,3 +74,4 @@ public class Main {
         }
     }
 }
+
