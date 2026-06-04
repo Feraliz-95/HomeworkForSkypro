@@ -1,4 +1,6 @@
-import org.skypro.skyshop.basket.ProductBasket;
+import org.skypro.skyshop.Article.Article;
+import org.skypro.skyshop.Article.SearchEngine;
+import org.skypro.skyshop.Article.Searchable;
 import org.skypro.skyshop.product.DiscountedProduct;
 import org.skypro.skyshop.product.FixPriceProduct;
 import org.skypro.skyshop.product.Product;
@@ -6,8 +8,9 @@ import org.skypro.skyshop.product.SimpleProduct;
 
 public class Main {
 
-
     public static void main(String[] args) {
+
+
         Product product1 = new SimpleProduct("Яблоко", 50);
         Product product2 = new DiscountedProduct("Банан", 70, 10);
         Product product3 = new FixPriceProduct("Апельсин");
@@ -15,43 +18,60 @@ public class Main {
         Product product5 = new DiscountedProduct("Виноград", 150, 20);
         Product product6 = new FixPriceProduct("Арбуз");
 
-        ProductBasket basket = new ProductBasket();
 
-        System.out.println("Добавление продукта в корзину.");
-        basket.addProduct(product1);
-        basket.addProduct(product2);
-        basket.addProduct(product3);
-        basket.addProduct(product4);
-        basket.addProduct(product5);
-
-        System.out.println("Добавление продукта в заполненную корзину, в которой нет свободного места.");
-        basket.addProduct(product6);
+        Article article1 = new Article("Польза яблок для здоровья",
+                "Яблоки содержат много витаминов и клетчатки. Особенно полезны яблоки " +
+                        "для тех, кто следит за фигурой. Яблоки Голден - отличный выбор!");
+        Article article2 = new Article("Как выбрать спелый апельсин",
+                "Выбирайте апельсины с тонкой кожурой, они обычно самые сочные. Апельсины Валенсия " +
+                        "известны своим сладким вкусом.");
+        Article article3 = new Article("Рецепты с бананами",
+                "Бананы - отличный ингредиент для смузи и десертов.  Бананы Кавендиш часто используют в выпечке");
 
 
-        System.out.println("Печать содержимого корзины с несколькими товарами.");
-        basket.printBasket();
+        SearchEngine searchEngine = new SearchEngine(10);
 
-        System.out.println("Получение стоимости корзины с несколькими товарами.");
-        System.out.println("Стоимость корзины: " + basket.getTotalPrice());
 
-        System.out.println("Поиск товара, который есть в корзине.");
-        System.out.println("Есть ли яблоко в корзине: " + basket.containsProduct("Яблоко"));
+        searchEngine.add(product1);
+        searchEngine.add(product2);
+        searchEngine.add(product3);
+        searchEngine.add(product4);
+        searchEngine.add(product5);
+        searchEngine.add(product6);
+        searchEngine.add(article1);
+        searchEngine.add(article2);
+        searchEngine.add(article3);
 
-        System.out.println("Поиск товара, которого нет в корзине.");
-        System.out.println("Есть ли груша в корзине: " + basket.containsProduct("Груша"));
 
-        System.out.println("Очистка корзины.");
-        basket.clearBasket();
+        System.out.println("Результаты поиска по запросу 'яблок':");
+        printSearchResults(searchEngine.search("яблок"));
 
-        System.out.println("Печать содержимого пустой корзины.");
-        basket.printBasket();
+        System.out.println("\nРезультаты поиска по запросу 'апельсин':");
+        printSearchResults(searchEngine.search("апельсин"));
 
-        System.out.println("Получение стоимости пустой корзины.");
-        System.out.println("Стоимость пустой корзины: " + basket.getTotalPrice());
+        System.out.println("\nРезультаты поиска по запросу 'банан':");
+        printSearchResults(searchEngine.search("банан"));
 
-        System.out.println("Поиск товара по имени в пустой корзине.");
-        System.out.println("Есть ли яблоко в корзине: " + basket.containsProduct("Яблоко"));
+        System.out.println("\nРезультаты поиска по запросу 'витамин':");
+        printSearchResults(searchEngine.search("витамин"));
+
+        System.out.println("\nРезультаты поиска по запросу 'кавендиш':");
+        printSearchResults(searchEngine.search(""));
+
+        System.out.println("\nРезультаты поиска по запросу несуществующему 'ананас':");
+        printSearchResults(searchEngine.search(""));
+    }
+
+
+
+    private static void printSearchResults(Searchable[] results) {
+        for (Searchable result : results) {
+            if (result != null) {
+                System.out.println("- " + result.getStringRepresentation());
+            } else {
+                System.out.println("- (Ничего не найдено)");
+            }
+        }
     }
 }
-
 
