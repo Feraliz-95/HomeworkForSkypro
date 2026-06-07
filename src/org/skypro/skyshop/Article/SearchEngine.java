@@ -1,45 +1,68 @@
 package org.skypro.skyshop.Article;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SearchEngine {
+    public Searchable findBestMatch(String search, List<Searchable> items) throws BestResultNotFound {
+        Searchable bestMatch = null;
+        int maxCount = 0;
 
-    private final Searchable[] searchables;
-    private int currentIndex = 0;
-
-    public SearchEngine(int size) {
-        this.searchables = new Searchable[size];
-    }
-
-    public Searchable[] search(String searchTerm) {
-        Searchable[] results = new Searchable[5];
-        int resultIndex = 0;
-
-        for (Searchable searchable : searchables) {
-            if (searchable != null && searchable.getSearchTerm().toLowerCase().contains(searchTerm.toLowerCase())) {
-                results[resultIndex] = searchable;
-                resultIndex++;
-
-                if (resultIndex == 5) {
-                    break; // Прерываем цикл, если нашли 5 результатов
-                }
+        for (Searchable item : items) {
+            String term = item.getSearchTerm();
+            int count = countOccurrences(term, search);
+            if (count > maxCount) {
+                maxCount = count;
+                bestMatch = item;
             }
         }
-        return results;
+
+        if (bestMatch == null) {
+            throw new BestResultNotFound("Подходящий объект не найден для запроса: " + search);
+        }
+        return bestMatch;
     }
 
-    public void add(Searchable searchable) {
-        if (currentIndex < searchables.length) {
-            searchables[currentIndex] = searchable;
-            currentIndex++;
-        } else {
-            System.out.println("Массив searchables заполнен.");
+    private int countOccurrences(String text, String search) {
+        int count = 0;
+        int index = 0;
+        while ((index = text.indexOf(search, index)) != -1) {
+            count++;
+            index += search.length();
         }
+        return count;
     }
 
-    // Дополнительно, метод для проверки, что поиск не вернет все null
-    public boolean isEmpty() {
-        for(Searchable s : searchables){
-            if(s != null) return false;
+        private final Searchable[] items;
+        private int currentSize = 0;
+        private static final int MAX_RESULTS = 5;
+    public SearchEngine( int capacity){
+            this.items = new Searchable[capacity];
         }
-        return true;
+
+        public void add (Searchable item){
+            if (currentSize < items.length) {
+                items[currentSize++] = item;
+            }
+        }
+
+        public Searchable[] search (String query){
+            List<Searchable> results = new ArrayList<>();
+
+            for (Searchable item : items) {
+                if (item != null && item.getSearchTerm().toLowerCase().contains(query.toLowerCase())) {
+                    results.add(item);
+                    if (results.size() >= MAX_RESULTS) {
+                        break;
+                    }
+                }
+            }
+
+            // Преобразуем в массив фиксированного размера (5 элементов)
+            Searchable[] resultArray = new Searchable[MAX_RESULTS];
+            for (int i = 0; i < Math.min(results.size(), MAX_RESULTS); i++) {
+                resultArray[i] = results.get(i);
+            }
+            return resultArray;
+        }
     }
-}

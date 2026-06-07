@@ -1,15 +1,17 @@
 package org.skypro.skyshop.Article;
 
-public record Article(String title, String text) implements Searchable {
+public final class Article implements Searchable {
+    private final String title;
+    private final String text;
 
-    @Override
-    public String toString() {
-        return title + "\n" + text;
+    public Article(String title, String text) {
+        this.title = title;
+        this.text = text;
     }
 
     @Override
     public String getSearchTerm() {
-        return toString();
+        return title + " " + text;
     }
 
     @Override
@@ -25,6 +27,11 @@ public record Article(String title, String text) implements Searchable {
     @Override
     public String getStringRepresentation() {
         return getName() + " - " + getContentType();
+    }
+
+    @Override
+    public String toString() {
+        return title + "\n" + text;
     }
 }
 
