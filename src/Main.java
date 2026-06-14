@@ -12,6 +12,7 @@ import java.util.List;
 
 
 public class Main {
+
     public static void main(String[] args) {
         // Создаём поисковый движок с вместимостью 15 элементов
         SearchEngine searchEngine = new SearchEngine(15);
@@ -78,11 +79,22 @@ public class Main {
         System.out.println(Arrays.toString(searchEngine.search("цитрусовые")));
 
 
+ HW-19
         // Демонстрация проверки данных в классе main
         try {
             SimpleProduct productSimple = new SimpleProduct(" ", 10);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
+
+
+    private static void printSearchResults(Searchable[] results) {
+        for (Searchable result : results) {
+            if (result != null) {
+                System.out.println("- " + result.getStringRepresentation());
+            } else {
+                System.out.println("- (Ничего не найдено)");
+            }
+
         }
 
         try {
@@ -112,6 +124,8 @@ public class Main {
 
     }
 }
+
+ HW-19
 
 
 
