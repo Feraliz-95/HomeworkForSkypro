@@ -33,7 +33,6 @@ public abstract class Product implements Searchable {
     }
 
 
-
     @Override
     public String toString() {
         return "Product {name= '" + name + "'}";
