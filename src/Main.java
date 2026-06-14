@@ -1,4 +1,5 @@
 import org.skypro.skyshop.Article.Article;
+import org.skypro.skyshop.Article.BestResultNotFound;
 import org.skypro.skyshop.Article.SearchEngine;
 import org.skypro.skyshop.Article.Searchable;
 import org.skypro.skyshop.product.DiscountedProduct;
@@ -6,11 +7,17 @@ import org.skypro.skyshop.product.FixPriceProduct;
 import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.SimpleProduct;
 
+import java.util.Arrays;
+import java.util.List;
+
+
 public class Main {
 
     public static void main(String[] args) {
+        // Создаём поисковый движок с вместимостью 15 элементов
+        SearchEngine searchEngine = new SearchEngine(15);
 
-
+        // Создаём товары
         Product product1 = new SimpleProduct("Яблоко", 50);
         Product product2 = new DiscountedProduct("Банан", 70, 10);
         Product product3 = new FixPriceProduct("Апельсин");
@@ -18,7 +25,7 @@ public class Main {
         Product product5 = new DiscountedProduct("Виноград", 150, 20);
         Product product6 = new FixPriceProduct("Арбуз");
 
-
+        // Создаём статьи
         Article article1 = new Article("Польза яблок для здоровья",
                 "Яблоки содержат много витаминов и клетчатки. Особенно полезны яблоки " +
                         "для тех, кто следит за фигурой. Яблоки Голден - отличный выбор!");
@@ -26,42 +33,58 @@ public class Main {
                 "Выбирайте апельсины с тонкой кожурой, они обычно самые сочные. Апельсины Валенсия " +
                         "известны своим сладким вкусом.");
         Article article3 = new Article("Рецепты с бананами",
-                "Бананы - отличный ингредиент для смузи и десертов.  Бананы Кавендиш часто используют в выпечке");
+                "Бананы - отличный ингредиент для смузи и десертов. Бананы Кавендиш часто используют в выпечке");
+        Article article4 = new Article("Витамины в фруктах",
+                "Большинство фруктов содержат витамины группы C и B. Особенно богаты витаминами цитрусовые: апельсины, мандарины.");
 
-
-        SearchEngine searchEngine = new SearchEngine(10);
-
-
+        // Добавляем все товары в поисковый движок
         searchEngine.add(product1);
         searchEngine.add(product2);
         searchEngine.add(product3);
         searchEngine.add(product4);
         searchEngine.add(product5);
         searchEngine.add(product6);
+
+        // Добавляем все статьи в поисковый движок
         searchEngine.add(article1);
         searchEngine.add(article2);
         searchEngine.add(article3);
+        searchEngine.add(article4);
 
+        // Демонстрируем функциональность поиска
+        System.out.println("=== ДЕМОНСТРАЦИЯ ФУНКЦИОНАЛЬНОСТИ ПОИСКА ===");
 
-        System.out.println("Результаты поиска по запросу 'яблок':");
-        printSearchResults(searchEngine.search("яблок"));
+        // Поиск по слову "яблок"
+        System.out.println("\nРезультаты поиска по запросу 'яблок':");
+        System.out.println(Arrays.toString(searchEngine.search("яблок")));
+
 
         System.out.println("\nРезультаты поиска по запросу 'апельсин':");
-        printSearchResults(searchEngine.search("апельсин"));
+        System.out.println(Arrays.toString(searchEngine.search("апельсин")));
 
-        System.out.println("\nРезультаты поиска по запросу 'банан':");
-        printSearchResults(searchEngine.search("банан"));
 
         System.out.println("\nРезультаты поиска по запросу 'витамин':");
-        printSearchResults(searchEngine.search("витамин"));
+        System.out.println(Arrays.toString(searchEngine.search("витамин")));
+
 
         System.out.println("\nРезультаты поиска по запросу 'кавендиш':");
-        printSearchResults(searchEngine.search(""));
+        System.out.println(Arrays.toString(searchEngine.search("кавендиш")));
 
+        // Поиск по несуществующему слову "ананас"
         System.out.println("\nРезультаты поиска по запросу несуществующему 'ананас':");
-        printSearchResults(searchEngine.search(""));
-    }
+        System.out.println(Arrays.toString(searchEngine.search("ананас")));
 
+        // Дополнительный поиск по слову "цитрусовые"
+        System.out.println("\nРезультаты поиска по запросу 'цитрусовые':");
+        System.out.println(Arrays.toString(searchEngine.search("цитрусовые")));
+
+
+ HW-19
+        // Демонстрация проверки данных в классе main
+        try {
+            SimpleProduct productSimple = new SimpleProduct(" ", 10);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
 
 
     private static void printSearchResults(Searchable[] results) {
@@ -71,7 +94,41 @@ public class Main {
             } else {
                 System.out.println("- (Ничего не найдено)");
             }
+
         }
+
+        try {
+            DiscountedProduct productDiscounted = new DiscountedProduct("Valid Product", 100, 150);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            SimpleProduct productS = new SimpleProduct("Product with spaces", 10);
+            DiscountedProduct productD = new DiscountedProduct("Another Product", 100, 50);
+
+            // Пример списка товаров
+            List<Searchable> products = List.of(product1, product2);
+
+            Searchable bestMatch = searchEngine.findBestMatch("Product", products);
+
+            System.out.println("Лучший подходящий продукт: " + bestMatch.getSearchTerm());
+        } catch (BestResultNotFound e) {
+            System.out.println(e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
+
+
+
     }
 }
+
+ HW-19
+
+
+
+
+
 
