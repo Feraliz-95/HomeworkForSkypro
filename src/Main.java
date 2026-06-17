@@ -2,20 +2,25 @@ import org.skypro.skyshop.Article.Article;
 import org.skypro.skyshop.Article.BestResultNotFound;
 import org.skypro.skyshop.Article.SearchEngine;
 import org.skypro.skyshop.Article.Searchable;
+import org.skypro.skyshop.basket.ProductBasket;
 import org.skypro.skyshop.product.DiscountedProduct;
 import org.skypro.skyshop.product.FixPriceProduct;
 import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.SimpleProduct;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 
 public class Main {
 
     public static void main(String[] args) {
-        // Создаём поисковый движок с вместимостью 15 элементов
-        SearchEngine searchEngine = new SearchEngine(15);
+
+        // Создаём поисковый движок
+        SearchEngine searchEngine = new SearchEngine();
+
+
+
 
         // Создаём товары
         Product product1 = new SimpleProduct("Яблоко", 50);
@@ -24,6 +29,7 @@ public class Main {
         Product product4 = new SimpleProduct("Мандарин", 80);
         Product product5 = new DiscountedProduct("Виноград", 150, 20);
         Product product6 = new FixPriceProduct("Арбуз");
+
 
         // Создаём статьи
         Article article1 = new Article("Польза яблок для здоровья",
@@ -45,38 +51,12 @@ public class Main {
         searchEngine.add(product5);
         searchEngine.add(product6);
 
+
         // Добавляем все статьи в поисковый движок
         searchEngine.add(article1);
         searchEngine.add(article2);
         searchEngine.add(article3);
         searchEngine.add(article4);
-
-        // Демонстрируем функциональность поиска
-        System.out.println("=== ДЕМОНСТРАЦИЯ ФУНКЦИОНАЛЬНОСТИ ПОИСКА ===");
-
-        // Поиск по слову "яблок"
-        System.out.println("\nРезультаты поиска по запросу 'яблок':");
-        System.out.println(Arrays.toString(searchEngine.search("яблок")));
-
-
-        System.out.println("\nРезультаты поиска по запросу 'апельсин':");
-        System.out.println(Arrays.toString(searchEngine.search("апельсин")));
-
-
-        System.out.println("\nРезультаты поиска по запросу 'витамин':");
-        System.out.println(Arrays.toString(searchEngine.search("витамин")));
-
-
-        System.out.println("\nРезультаты поиска по запросу 'кавендиш':");
-        System.out.println(Arrays.toString(searchEngine.search("кавендиш")));
-
-        // Поиск по несуществующему слову "ананас"
-        System.out.println("\nРезультаты поиска по запросу несуществующему 'ананас':");
-        System.out.println(Arrays.toString(searchEngine.search("ананас")));
-
-        // Дополнительный поиск по слову "цитрусовые"
-        System.out.println("\nРезультаты поиска по запросу 'цитрусовые':");
-        System.out.println(Arrays.toString(searchEngine.search("цитрусовые")));
 
 
  HW-19
@@ -108,6 +88,7 @@ public class Main {
             DiscountedProduct productD = new DiscountedProduct("Another Product", 100, 50);
 
             // Пример списка товаров
+
             List<Searchable> products = List.of(product1, product2);
 
             Searchable bestMatch = searchEngine.findBestMatch("Product", products);
@@ -120,12 +101,60 @@ public class Main {
         }
 
 
+        // Изменение метода main
+        ProductBasket basket = new ProductBasket();
+        Product apple = new SimpleProduct("Яблоко", 10);
+        Product banana = new DiscountedProduct("Банан", 15, 25);
+        Product orange = new FixPriceProduct("Апельсин");
+
+        basket.addProduct(apple);
+        basket.addProduct(banana);
+        basket.addProduct(orange);
+
+        // Удаление существующего продукта
+        List<Product> removedProducts = basket.removeProductsByName("Яблоко");
+        System.out.println("Удаленные продукты: " + removedProducts);
+        basket.printBasket();
+
+        // Удаление несуществующего продукта
+        removedProducts = basket.removeProductsByName("Груша");
+        if (removedProducts.isEmpty()) {
+            System.out.println("Список пуст");
+        }
+        basket.printBasket();
 
 
+        // Добавляем примеры объектов, которые реализуют интерфейс Searchable
+        searchEngine.add(new SimpleProduct("Apple", 10));
+        searchEngine.add(new SimpleProduct("Banana", 25));
+        searchEngine.add(new SimpleProduct("Egg", 110));
+        // Выполняем поиск
+        String query = "an";
+        List<Searchable> results = searchEngine.search(query);
+
+        System.out.println("Результаты поиска для '" + query + "':");
+        for (Searchable item : results) {
+            System.out.println(item.getSearchTerm());
+        }
+        // Можно выполнить поиск с другим запросом
+        query = "pe";
+        results = searchEngine.search(query);
+        System.out.println("Результаты поиска для '" + query + "':");
+        for (Searchable item : results) {
+            System.out.println(item.getSearchTerm());
+        }
     }
+
+
 }
 
  HW-19
+
+
+
+
+
+
 
 
 

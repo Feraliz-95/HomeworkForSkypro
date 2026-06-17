@@ -1,67 +1,47 @@
 package org.skypro.skyshop.basket;
 import org.skypro.skyshop.product.Product;
+
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 public class ProductBasket {
-    private final Product[] basket;
+    private List<Product> products;
 
     public ProductBasket() {
-        this.basket = new Product[5];
+        products = new ArrayList<>();
     }
 
     public void addProduct(Product product) {
-        for (int i = 0; i < basket.length; i++) {
-            if (basket[i] == null) {
-                basket[i] = product;
-                return;
-            }
-        }
-        System.out.println("Невозможно добавить продукт");
+        products.add(product);
     }
 
-    public int getTotalPrice() {
-        int totalPrice = 0;
-        for (Product product : basket) {
-            if (product != null) {
-                totalPrice += product.getPrice();
+    public List<Product> removeProductsByName(String name) {
+        List<Product> removedProducts = new ArrayList<>();
+        Iterator<Product> iterator = products.iterator();
+        while (iterator.hasNext()) {
+            Product product = iterator.next();
+            if (product.getName().equals(name)) {
+                removedProducts.add(product);
+                iterator.remove();
             }
         }
-        return totalPrice;
+        return removedProducts;
     }
 
     public void printBasket() {
-        boolean isEmpty = true;
-        int specialItemsCount = 0;
-        for (Product product : basket) {
-            if (product != null) {
-                System.out.println(product);
-                isEmpty = false;
-                if (product.isSpecial()) {
-                    specialItemsCount++;
-                }
-            }
-        }
-
-        if (isEmpty) {
-            System.out.println("В корзине пусто");
+        if (products.isEmpty()) {
+            System.out.println("Корзина пуста.");
         } else {
-            System.out.println("Итого: " + getTotalPrice());
-            System.out.println("Специальных товаров: " + specialItemsCount);
-        }
-    }
-
-    public boolean containsProduct(String productName) {
-        for (Product product : basket) {
-            if (product != null && product.getName().equals(productName)) {
-                return true;
+            for (Product product : products) {
+                System.out.println(product);
             }
         }
-        return false;
-    }
-
-    public void clearBasket() {
-        Arrays.fill(basket, null);
     }
 }
+
+
+
 
 
