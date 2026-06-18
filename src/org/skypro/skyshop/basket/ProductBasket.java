@@ -1,47 +1,47 @@
 package org.skypro.skyshop.basket;
 import org.skypro.skyshop.product.Product;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class ProductBasket {
-    private List<Product> products;
+    private Map<String, List<Product>> cart;
 
     public ProductBasket() {
-        products = new ArrayList<>();
+        cart = new HashMap<>();
     }
 
     public void addProduct(Product product) {
-        products.add(product);
+        cart.computeIfAbsent(product.getName(), k -> new ArrayList<>()).add(product);
     }
 
-    public List<Product> removeProductsByName(String name) {
-        List<Product> removedProducts = new ArrayList<>();
-        Iterator<Product> iterator = products.iterator();
-        while (iterator.hasNext()) {
-            Product product = iterator.next();
-            if (product.getName().equals(name)) {
-                removedProducts.add(product);
-                iterator.remove();
+    // Метод для удаления продукта
+    public void removeProduct(Product product) {
+        List<Product> products = cart.get(product.getName());
+        if (products != null) {
+            products.remove(product);
+            if (products.isEmpty()) {
+                cart.remove(product.getName());
             }
         }
-        return removedProducts;
     }
 
-    public void printBasket() {
-        if (products.isEmpty()) {
-            System.out.println("Корзина пуста.");
-        } else {
+
+    public void printCart() {
+        // Перебираем все записи в Map
+        for (Map.Entry<String, List<Product>> entry : cart.entrySet()) {
+            String productName = entry.getKey();
+            List<Product> products = entry.getValue();
+            System.out.println("Product Name: " + productName);
+            // Вложенный цикл для перебора всех продуктов с одним и тем же именем
             for (Product product : products) {
-                System.out.println(product);
+                System.out.println("Product price: " + product.getPrice());
             }
         }
     }
+
+    public List<Product> getProductsByName(String name) {
+        return cart.getOrDefault(name, new ArrayList<>());
+    }
+
+
 }
-
-
-
-
-
