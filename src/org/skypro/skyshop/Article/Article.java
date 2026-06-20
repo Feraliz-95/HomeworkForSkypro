@@ -29,6 +29,7 @@ public final class Article implements Searchable {
         return getName() + " - " + getContentType();
     }
 
+
     @Override
     public String toString() {
         return title + "\n" + text;

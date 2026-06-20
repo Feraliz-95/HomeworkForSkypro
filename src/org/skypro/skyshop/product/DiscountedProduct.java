@@ -29,6 +29,7 @@ public class DiscountedProduct extends Product {
         return getName() + ": " + getPrice() + " (" + discountPercentage + "%)";
     }
 
+
     @Override
     public String getSearchTerm() {
         return "";

@@ -8,5 +8,6 @@ package org.skypro.skyshop.Article;
         default String getStringRepresentation() {
             return getName() + " - " + getContentType();
         }
+
     }
 
