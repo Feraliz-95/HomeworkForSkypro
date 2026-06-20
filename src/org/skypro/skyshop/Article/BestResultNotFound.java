@@ -5,5 +5,4 @@ public class BestResultNotFound extends Exception {
         super(search);
     }
 
-
 }

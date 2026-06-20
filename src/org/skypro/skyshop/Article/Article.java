@@ -33,6 +33,7 @@ public final class Article implements Searchable {
     public String toString() {
         return title + "\n" + text;
     }
+
 }
 
 

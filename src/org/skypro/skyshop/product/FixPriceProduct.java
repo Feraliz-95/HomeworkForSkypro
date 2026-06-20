@@ -32,4 +32,5 @@ public class FixPriceProduct extends Product {
         return super.getStringRepresentation();
     }
 
+
 }
