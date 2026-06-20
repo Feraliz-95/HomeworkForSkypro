@@ -34,4 +34,3 @@ public final class Article implements Searchable {
         return title + "\n" + text;
     }
 }
-

@@ -42,6 +42,4 @@ public class ProductBasket {
     public List<Product> getProductsByName(String name) {
         return cart.getOrDefault(name, new ArrayList<>());
     }
-
-
 }

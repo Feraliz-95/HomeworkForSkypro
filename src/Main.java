@@ -32,8 +32,8 @@ public class Main {
             System.out.println("Product Name: " + productName + ", Price: " + product.getPrice());
         }
     }
-}
 
+}
 
 
 

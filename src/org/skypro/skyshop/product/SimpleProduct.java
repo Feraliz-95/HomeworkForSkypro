@@ -25,4 +25,5 @@ public class SimpleProduct extends Product {
     public String getSearchTerm() {
         return "";
     }
+
 }
