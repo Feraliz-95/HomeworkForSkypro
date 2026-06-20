@@ -26,5 +26,4 @@ public class SimpleProduct extends Product {
         return "";
     }
 
-
 }

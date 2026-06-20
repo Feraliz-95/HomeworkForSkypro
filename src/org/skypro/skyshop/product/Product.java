@@ -53,6 +53,4 @@ public abstract class Product implements Searchable {
         return Objects.hash(name);
     }
 
-
-
 }

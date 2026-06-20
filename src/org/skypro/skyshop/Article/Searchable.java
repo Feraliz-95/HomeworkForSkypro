@@ -5,6 +5,7 @@ package org.skypro.skyshop.Article;
         String getContentType();
         String getName();
 
+
         default String getStringRepresentation() {
             return getName() + " - " + getContentType();
         }

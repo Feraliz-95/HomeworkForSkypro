@@ -18,6 +18,5 @@ public class SearchEngine {
         }
         return result;
     }
-
 }
 
