@@ -31,4 +31,6 @@ public class FixPriceProduct extends Product {
     public String getStringRepresentation() {
         return super.getStringRepresentation();
     }
+
+
 }

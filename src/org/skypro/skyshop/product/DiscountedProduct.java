@@ -32,4 +32,6 @@ public class DiscountedProduct extends Product {
     public String getSearchTerm() {
         return "";
     }
+
+
 }
