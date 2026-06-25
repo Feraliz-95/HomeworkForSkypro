@@ -39,6 +39,7 @@ public final class Article implements Searchable, Comparator<Article> {
         return title + "\n" + text;
     }
 
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -70,5 +71,9 @@ public final class Article implements Searchable, Comparator<Article> {
 
 
 
+
+
+
+}
 
 

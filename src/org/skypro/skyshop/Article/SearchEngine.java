@@ -10,6 +10,7 @@ import java.util.List;
 public class SearchEngine {
 
     // Список для хранения searchable объектов
+
     public Set<Searchable> search(Set<Searchable> items) {
         // Создаем TreeSet с кастомным компаратором
         Set<Searchable> result = new TreeSet<>(new SearchableComparator());
@@ -30,5 +31,16 @@ public class SearchEngine {
             return o1.getName().compareTo(o2.getName());
         }
     }
+
+    public Map<String, Searchable> search(List<Searchable> items) {
+        Map<String, Searchable> result = new TreeMap<>();
+
+        for (Searchable item : items) {
+            result.put(item.getName(), item);
+        }
+        return result;
+    }
+
+
 }
 
