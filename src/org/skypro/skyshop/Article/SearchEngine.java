@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 public class SearchEngine {
 
     // Список для хранения searchable объектов
+ HW-24
     public TreeSet<String> search(List<String> list) {
         return list.stream() //list.stream() — преобразует список в поток.
                 .filter(s -> s.startsWith("prefix")) // Пример условия фильтрации
@@ -15,6 +16,14 @@ public class SearchEngine {
                         () -> new TreeSet<>(Comparator.comparing(String::length).reversed())
 
                 ));
+
+
+    public Set<Searchable> search(Set<Searchable> items) {
+        // Создаем TreeSet с кастомным компаратором
+        Set<Searchable> result = new TreeSet<>(new SearchableComparator());
+        result.addAll(items);
+        return result;
+
     }
 
     // Кастомный компаратор для сортировки Searchable объектов
@@ -30,5 +39,16 @@ public class SearchEngine {
             return o1.getName().compareTo(o2.getName());
         }
     }
+
+    public Map<String, Searchable> search(List<Searchable> items) {
+        Map<String, Searchable> result = new TreeMap<>();
+
+        for (Searchable item : items) {
+            result.put(item.getName(), item);
+        }
+        return result;
+    }
+
+
 }
 

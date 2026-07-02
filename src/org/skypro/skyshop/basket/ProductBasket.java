@@ -64,10 +64,22 @@ public class ProductBasket {
                 .filter(this::isSpecialProduct)
                 .count();
 
+ HW-24
     }
     private boolean isSpecialProduct(Product product) {
         return product instanceof FixPriceProduct;
     }
+
+
+    public List<Product> getProductsByName(String name) {
+        return cart.getOrDefault(name, new ArrayList<>());
+    }
+
+}
+
+
+
+
     public List<Product> getProductsByName(String name) {
         return cart.getOrDefault(name, new ArrayList<>());
     }
