@@ -8,6 +8,9 @@ import org.skypro.skyshop.product.FixPriceProduct;
 import org.skypro.skyshop.product.Product;
 import org.skypro.skyshop.product.SimpleProduct;
 
+
+import java.util.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +20,25 @@ public class Main {
     public static void main(String[] args) {
 
         // Создаём поисковый движок
+
+
+        Set<Searchable> items = new HashSet<>();
+        items.add(new Article("Java", "Basics"));
+        items.add(new Article("JavaScript", "JavaScript for beginners"));
+        items.add(new Article("Java Advanced", "Programming"));
+        items.add(new SimpleProduct("Apple", 28));// будет добавлен
+        items.add(new SimpleProduct("Apple", 28));// не будет добавлен, дубликат
+        items.add(new SimpleProduct("Banana", 55));
+        items.add(new DiscountedProduct("kiwi", 100, 25));
+        items.add(new FixPriceProduct("egg"));
+        // Вывод результатов поиска
+        System.out.println("Список статей и продуктов:");
+        for (Object item : items) {
+            System.out.printf("- %s%n", item);
+        }
+
+        }
+    }
 
         List<Searchable> products = new ArrayList<>();
         products.add(new SimpleProduct("Banana", 28));
@@ -36,6 +58,7 @@ public class Main {
         }
     }
 }
+
 
 
 

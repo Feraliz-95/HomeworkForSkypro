@@ -1,3 +1,4 @@
+
 package org.skypro.skyshop.product;
 
 public class DiscountedProduct extends Product {
@@ -18,6 +19,7 @@ public class DiscountedProduct extends Product {
         return basePrice * (100 - discountPercentage) / 100;
     }
 
+
     @Override
     public boolean isSpecial() {
         return true;
@@ -27,6 +29,7 @@ public class DiscountedProduct extends Product {
     public String toString() {
         return getName() + ": " + getPrice() + " (" + discountPercentage + "%)";
     }
+
 
     @Override
     public String getSearchTerm() {

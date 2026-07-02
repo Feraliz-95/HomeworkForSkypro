@@ -5,7 +5,11 @@ import org.skypro.skyshop.Article.Searchable;
 import java.util.Objects;
 
 
+
+public abstract class Product implements Searchable, Comparable<Product> {
+
 public abstract class Product implements Searchable {
+
     protected final String name;
 
     protected Product(String name) {
@@ -41,11 +45,34 @@ public abstract class Product implements Searchable {
         return "Product {name= '" + name + "'}";
     }
     @Override
+
+    public int compareTo(Product other) {
+        // Такая же логика сравнения, как в компараторе
+        int lengthCompare = Integer.compare(other.getName().length(), this.getName().length());
+        if (lengthCompare != 0) {
+            return lengthCompare;
+        }
+        return this.getName().compareTo(other.getName());
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Product product = (Product) obj;
+        return Objects.equals(getName(), product.getName());
+    }
+
+    @Override
+    public int hashCode() {
+         return Objects.hash(getName());
+    }
+
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (!(obj instanceof Product)) return false;
         Product other = (Product) obj;
         return name.equals(other.name);
+
     }
 
     @Override
@@ -53,4 +80,8 @@ public abstract class Product implements Searchable {
         return Objects.hash(name);
     }
 
+
 }
+
+}
+
