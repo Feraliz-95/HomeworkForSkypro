@@ -1,20 +1,20 @@
 package org.skypro.skyshop.Article;
-
 import org.skypro.skyshop.product.Product;
-
 import java.util.*;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SearchEngine {
 
     // Список для хранения searchable объектов
-    public Set<Searchable> search(Set<Searchable> items) {
-        // Создаем TreeSet с кастомным компаратором
-        Set<Searchable> result = new TreeSet<>(new SearchableComparator());
-        result.addAll(items);
-        return result;
+    public TreeSet<String> search(List<String> list) {
+        return list.stream() //list.stream() — преобразует список в поток.
+                .filter(s -> s.startsWith("prefix")) // Пример условия фильтрации
+                .collect(Collectors.toCollection(           //собирает элементы в коллекцию, используя Supplier
+                        () -> new TreeSet<>(Comparator.comparing(String::length).reversed())
+
+                ));
     }
 
     // Кастомный компаратор для сортировки Searchable объектов
