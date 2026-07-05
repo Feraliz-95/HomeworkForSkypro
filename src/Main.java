@@ -35,10 +35,11 @@ public class Main {
         System.out.println("Список статей и продуктов:");
         for (Object item : items) {
             System.out.printf("- %s%n", item);
-        }
+
 
         }
     }
+}
 
         List<Searchable> products = new ArrayList<>();
         products.add(new SimpleProduct("Banana", 28));
