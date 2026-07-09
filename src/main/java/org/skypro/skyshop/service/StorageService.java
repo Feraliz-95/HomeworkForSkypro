@@ -9,7 +9,6 @@ import org.skypro.skyshop.model.search.Searchable;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-
 @Service
 public class StorageService {
     private final Map<UUID, Product> products;
