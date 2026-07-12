@@ -14,10 +14,17 @@ public class StorageService {
     private final Map<UUID, Product> products;
     private final Map<UUID, Article> articles;
 
+
     public StorageService() {
         this.products = new HashMap<>();
         this.articles = new HashMap<>();
         loadTestData();
+    }
+    public void addProduct(Product product) {
+        products.put(product.getId(), product);
+    }
+    public Optional<Product> getProductById(UUID id) {
+        return Optional.ofNullable(products.get(id));
     }
 
     public Collection<Product> getAllProducts() {
@@ -28,6 +35,7 @@ public class StorageService {
         return Collections.unmodifiableCollection(articles.values());
     }
 
+
     // Новый метод для поиска
     public List<Searchable> getAllSearchableItems() {
         List<Searchable> result = new ArrayList<>();
@@ -35,6 +43,7 @@ public class StorageService {
         result.addAll(getAllProducts());
         return result;
     }
+
 
     private void loadTestData() {
         // Генерируем UUID для каждого объекта
