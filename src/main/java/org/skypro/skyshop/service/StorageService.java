@@ -1,5 +1,5 @@
 package org.skypro.skyshop.service;
-
+import org.skypro.skyshop.exceptions.NoSuchProductException;
 import org.skypro.skyshop.model.article.Article;
 import org.skypro.skyshop.model.product.DiscountedProduct;
 import org.skypro.skyshop.model.product.FixPriceProduct;
@@ -23,11 +23,18 @@ public class StorageService {
     public void addProduct(Product product) {
         products.put(product.getId(), product);
     }
-    public Optional<Product> getProductById(UUID id) {
-        return Optional.ofNullable(products.get(id));
+
+    public Optional<Product> getProductById(UUID id)  {
+        return Optional.of(Optional.ofNullable(products.get(id))
+                .orElseThrow(() -> new NoSuchProductException("Product not found with id: " + id)));
+
     }
 
-    public Collection<Product> getAllProducts() {
+
+
+
+
+public Collection<Product> getAllProducts() {
         return Collections.unmodifiableCollection(products.values());
     }
 
