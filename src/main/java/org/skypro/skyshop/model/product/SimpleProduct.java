@@ -1,6 +1,8 @@
 package org.skypro.skyshop.model.product;
 import java.util.UUID;
 
+import java.util.UUID;
+
 public class SimpleProduct extends Product {
     int price;
 
@@ -12,11 +14,11 @@ public class SimpleProduct extends Product {
         }
     }
 
-   @Override
+    @Override
     public int getPrice() {
         return price;
     }
-   @Override
+    @Override
     public boolean isSpecial() {
         return false;
     }

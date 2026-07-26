@@ -1,9 +1,11 @@
 package org.skypro.skyshop.service;
 
+import org.skypro.skyshop.model.article.Article;
+import org.skypro.skyshop.model.product.Product;
 import org.skypro.skyshop.model.search.SearchResult;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class SearchService {
@@ -14,9 +16,26 @@ public class SearchService {
     }
 
     public List<SearchResult> search(String pattern) {
-        return storageService.getAllSearchableItems().stream()
-                .filter(item -> item.getSearchableName().toLowerCase().contains(pattern.toLowerCase()))
+        if (pattern == null || pattern.isBlank()) {
+            pattern = "";
+        }
+
+        String searchPattern = pattern.toLowerCase();
+
+        return storageService.getAllSearchableItems()
+                .stream()
+                .filter(item -> {
+                    String textToSearch;
+                    if (item instanceof Product product) {
+                        textToSearch = product.getName();
+                    } else if (item instanceof Article article) {
+                        textToSearch = article.getSearchableName();
+                    } else {
+                        return false;
+                    }
+                    return textToSearch.toLowerCase().contains(searchPattern);
+                })
                 .map(SearchResult::fromSearchable)
-                .collect(Collectors.toList());
+                .toList();
     }
 }
