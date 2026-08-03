@@ -1,5 +1,4 @@
 package org.example.exam_questions;
-
 import org.example.exam_questions.exception.ExamException;
 import org.example.exam_questions.questionExam.Question;
 import org.example.exam_questions.serviceExam.ExaminerServiceImpl;
@@ -13,7 +12,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;

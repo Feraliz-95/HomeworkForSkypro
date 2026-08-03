@@ -1,5 +1,4 @@
 package org.example.exam_questions.controller;
-
 import jakarta.annotation.PostConstruct;
 import org.example.exam_questions.questionExam.Question;
 import org.example.exam_questions.serviceExam.ExaminerService;
