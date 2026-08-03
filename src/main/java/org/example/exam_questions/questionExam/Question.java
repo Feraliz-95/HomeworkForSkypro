@@ -1,7 +1,6 @@
 package org.example.exam_questions.questionExam;
 import java.util.Objects;
 import java.util.UUID;
-
 import static java.awt.SystemColor.text;
 
 public class Question {
