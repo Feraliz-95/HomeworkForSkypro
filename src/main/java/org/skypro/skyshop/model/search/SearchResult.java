@@ -1,6 +1,8 @@
 package org.skypro.skyshop.model.search;
 
-import java.util.UUID;
+import org.skypro.skyshop.model.article.Article;
+import org.skypro.skyshop.model.product.Product;
+
 public class SearchResult {
     private final String id;
     private final String name;
@@ -23,18 +25,27 @@ public class SearchResult {
     public String getContentType() {
         return contentType;
     }
-
-    /**
-     * Статический фабричный метод для создания SearchResult из Searchable.
-     */
-    public static SearchResult fromSearchable(Searchable searchable) {
-        String id;
-        if (searchable.getId() instanceof UUID) {
-            id = ((UUID) searchable.getId()).toString(); // Преобразование UUID в строку
-        } else {
-            id = String.valueOf(searchable.getId()); // Если id уже строка, просто присваиваем
+    public static SearchResult fromSearchable(Searchable item) {
+        if (item == null) {
+            throw new IllegalArgumentException("Searchable item cannot be null");
         }
 
-        return new SearchResult(id, searchable.getSearchableName(), searchable.getContentType());
+        String id = item.getId().toString(); // UUID -> String
+        String name;
+        String contentType;
+
+        if (item instanceof Product product) {
+            name = product.getName();
+            contentType = "product";
+        } else if (item instanceof Article article) {
+            name = article.getSearchableName();
+            contentType = "article";
+        } else {
+            // Если появится другой тип Searchable — можно расширить логику
+            name = "Unknown";
+            contentType = "unknown";
+        }
+
+        return new SearchResult(id, name, contentType);
     }
 }

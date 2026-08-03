@@ -16,9 +16,12 @@ public class FixPriceProduct extends Product  {
         return FIXED_PRICE;
     }
 
+
     public boolean isSpecial() {
         return true;
     }
+
+
 
     public String toString() {
         return name + " c фиксированной ценой: Фиксировання цена " + FixPriceProduct.FIXED_PRICE;
@@ -27,6 +30,6 @@ public class FixPriceProduct extends Product  {
     @Override
     public String getSearchableName() {
         // Здесь вы должны вернуть имя, по которому продукт будет искаться
-        return "Имя продукта";  // Замените на нужное значение
+        return "Имя продукта";
     }
 }

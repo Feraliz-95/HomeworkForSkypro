@@ -1,53 +1,54 @@
 package org.skypro.skyshop.service;
 
-
+import org.skypro.skyshop.exceptions.NoSuchProductException;
+import org.skypro.skyshop.model.basket.BasketItem;
 import org.skypro.skyshop.model.basket.ProductBasket;
+import org.skypro.skyshop.model.basket.UserBasket;
+
 import org.skypro.skyshop.model.product.Product;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
 public class BasketService {
-
-    private final ProductBasket basket;
+    private final ProductBasket productBasket;
     private final StorageService storageService;
 
-    @Autowired
-    public BasketService(ProductBasket basket, StorageService storageService) {
-        this.basket = basket;
+    public BasketService(ProductBasket productBasket, StorageService storageService) {
+        this.productBasket = productBasket;
         this.storageService = storageService;
     }
-    public void addProductToBasket(UUID productId) {
+    public void addToBasket(UUID productId) {
         if (productId == null) {
             throw new IllegalArgumentException("Product ID cannot be null");
         }
-
         Optional<Product> productOpt = storageService.getProductById(productId);
-
         if (!productOpt.isPresent()) {
-            throw new IllegalArgumentException("Product with ID " + productId + " not found");
+            // Здесь теперь выбрасываем кастомное исключение
+            throw new NoSuchProductException("Product with id " + productId + " not found");
         }
 
-        // Продукт найден — добавляем в сессионную корзину
-        basket.addProduct(productId);
+        productBasket.addProduct(productId);
+    }
+
+    public Map<UUID, Integer> getBasketContents() {
+        return productBasket.getItems();
     }
     public UserBasket getUserBasket() {
-        var items = basket.getContents().entrySet().stream()
-                .flatMap(entry -> {
-                    UUID id = entry.getKey();
-                    int qty = entry.getValue();
+        Map<UUID, Integer> basketMap = productBasket.getItems();
 
-                    Optional<Product> opt = storageService.getProductById(id);
-                    if (opt.isEmpty()) {
-                        // Товар удалён из хранилища — не показываем его в корзине
-                        return java.util.stream.Stream.empty();
-                    }
-
-                    return java.util.stream.Stream.of(new BasketItem(opt.get(), qty));
+        List<BasketItem> items = basketMap.entrySet().stream()
+                // Оставляем только товары, которые ещё есть в хранилище
+                .filter(entry -> storageService.getProductById(entry.getKey()).isPresent())
+                .map(entry -> {
+                    Product product = storageService.getProductById(entry.getKey())
+                            .orElseThrow(); // безопасно: фильтр выше уже гарантирует наличие
+                    return new BasketItem(product, entry.getValue());
                 })
                 .collect(Collectors.toList());
 

@@ -1,81 +1,64 @@
 package org.skypro.skyshop.service;
-import org.skypro.skyshop.exceptions.NoSuchProductException;
 import org.skypro.skyshop.model.article.Article;
 import org.skypro.skyshop.model.product.DiscountedProduct;
 import org.skypro.skyshop.model.product.FixPriceProduct;
 import org.skypro.skyshop.model.product.Product;
 import org.skypro.skyshop.model.product.SimpleProduct;
 import org.skypro.skyshop.model.search.Searchable;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+
+
+@Component
 @Service
 public class StorageService {
-    private final Map<UUID, Product> products;
-    private final Map<UUID, Article> articles;
-
+    // Используем изменяемый список внутри, но наружу отдаём неизменяемую обёртку
+    private final Map<UUID, Product> products = new HashMap<>();
+    private final List<Article> articles = new ArrayList<>();
 
     public StorageService() {
-        this.products = new HashMap<>();
-        this.articles = new HashMap<>();
-        loadTestData();
-    }
-    public void addProduct(Product product) {
-        products.put(product.getId(), product);
+        seedTestData();
     }
 
-    public Optional<Product> getProductById(UUID id)  {
-        return Optional.of(Optional.ofNullable(products.get(id))
-                .orElseThrow(() -> new NoSuchProductException("Product not found with id: " + id)));
+    private void seedTestData() {
+        UUID p1Id = UUID.randomUUID();
+        UUID p2Id = UUID.randomUUID();
+        UUID p3Id = UUID.randomUUID();
 
+        Product p1 = new SimpleProduct(p1Id, "Ноутбук", 15000);
+        Product p2 = new DiscountedProduct(p2Id, "Мышь беспроводная", 1300, 15);
+        Product p3 = new FixPriceProduct(p3Id, "Клавиатура");
+
+        products.put(p1Id, p1);
+        products.put(p2Id, p2);
+        products.put(p3Id, p3);
+
+
+        UUID a1Id = UUID.randomUUID();
+        UUID a2Id = UUID.randomUUID();
+        UUID a3Id = UUID.randomUUID();
+
+        articles.add(new Article(a1Id, "Как выбрать ноутбук", "Подробное руководство..."));
+        articles.add(new Article(a2Id, "Обзор беспроводной мыши", "Тестируем модели..."));
+        articles.add(new Article(a3Id, "Топ-5 клавиатур 2026", "Подборка лучших..."));
     }
 
+    public Collection<Searchable> getAllSearchableItems() {
+        List<Searchable> allItems = new ArrayList<>(products.values());
+        allItems.addAll(articles);
+        return allItems;
+    }
+    public Optional<Product> getProductById(UUID id) {
+        return Optional.ofNullable(products.get(id));
+    }
 
-
-
-
-public Collection<Product> getAllProducts() {
+    public Collection<Product> getAllProducts() {
         return Collections.unmodifiableCollection(products.values());
     }
 
     public Collection<Article> getAllArticles() {
-        return Collections.unmodifiableCollection(articles.values());
+        return Collections.unmodifiableCollection(articles);
     }
-
-
-    // Новый метод для поиска
-    public List<Searchable> getAllSearchableItems() {
-        List<Searchable> result = new ArrayList<>();
-        result.addAll(getAllArticles());
-        result.addAll(getAllProducts());
-        return result;
-    }
-
-
-    private void loadTestData() {
-        // Генерируем UUID для каждого объекта
-        UUID p1Id = UUID.randomUUID();
-        UUID p2Id = UUID.randomUUID();
-        UUID p3Id = UUID.randomUUID();
-        // Создаём продукты с UUID
-        SimpleProduct simpleProduct = new SimpleProduct(p1Id, "Ноутбук", 15000);
-        DiscountedProduct discountedProduct = new DiscountedProduct(p2Id, "Мышь беспроводная", 1300, 15);
-        FixPriceProduct fixPriceProduct = new FixPriceProduct(p3Id, "Клавиатура");
-
-        products.put(p1Id, simpleProduct);
-        products.put(p2Id, discountedProduct);
-        products.put(p3Id, fixPriceProduct);
-
-        //Статьи
-        UUID a1Id = UUID.randomUUID();
-        UUID a2Id = UUID.randomUUID();
-
-        Article article1 = new Article(a1Id, "Как выбрать ноутбук", "Советы по выбору ноутбука: процессор, экран, батарея");
-        Article article2 = new Article(a2Id, "Обзор беспроводных мышей", "Сравнение популярных моделей и удобство использования");
-
-        articles.put(a1Id, article1);
-        articles.put(a2Id, article2);
-
-    }
-
 }
