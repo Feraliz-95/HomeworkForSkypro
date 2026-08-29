@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.*;
 import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.service.StudentService;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/student")
@@ -43,4 +45,12 @@ public class StudentController {
         studentService.deleteStudent(id);
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping("/by-age")
+    public List<Student> getStudentsByAgeRange(
+            @RequestParam int min,
+            @RequestParam int max) {
+        return studentService.getStudentsByAgeRange(min, max);
+    }
+
 }
