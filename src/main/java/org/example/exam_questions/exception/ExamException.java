@@ -1,5 +1,4 @@
 package org.example.exam_questions.exception;
-
 import org.springframework.http.HttpStatus;
 
 public class ExamException extends RuntimeException{
