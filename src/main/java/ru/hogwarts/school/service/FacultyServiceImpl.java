@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import ru.hogwarts.school.model.Faculty;
 import ru.hogwarts.school.repository.FacultyRepository;
 
+import java.util.List;
+
 
 @Service
 public class FacultyServiceImpl implements FacultyService{
@@ -34,5 +36,13 @@ public class FacultyServiceImpl implements FacultyService{
 
     public void deleteFaculty(long id) {
         facultyRepository.deleteById(id);
+    }
+
+    public List<Faculty> searchFaculties(String query) {
+        if (query == null || query.isBlank()) {
+            return facultyRepository.findAll();
+        }
+        return facultyRepository.findByNameContainingIgnoreCaseOrColorContainingIgnoreCase(
+                query, query);
     }
 }
