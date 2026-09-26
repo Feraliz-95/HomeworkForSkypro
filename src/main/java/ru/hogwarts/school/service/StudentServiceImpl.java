@@ -8,7 +8,7 @@ import java.util.List;
 
 
 @Service
-public class StudentServiceImpl  implements StudentService{
+public class StudentServiceImpl  implements StudentService {
 
 
     private final StudentRepository studentRepository;
@@ -24,7 +24,7 @@ public class StudentServiceImpl  implements StudentService{
     }
 
     public Student findStudent(long id) {
-        return studentRepository.findById(id).get();
+        return studentRepository.findById(id).orElse(null);
     }
 
     public Student editStudent(long id, Student student) {
@@ -44,5 +44,20 @@ public class StudentServiceImpl  implements StudentService{
         return studentRepository.findByAgeBetween(minAge, maxAge);
     }
 
+
+    @Override
+    public long getTotalStudentsCount() {
+        return studentRepository.countAllStudents();
     }
+
+    @Override
+    public Double getAverageAge() {
+        return studentRepository.getAverageAge();
+    }
+
+    @Override
+    public List<Student> getLastFiveStudents() {
+        return studentRepository.findLastFiveStudents();
+    }
+}
 
