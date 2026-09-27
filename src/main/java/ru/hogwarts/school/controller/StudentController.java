@@ -46,11 +46,24 @@ public class StudentController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/by-age")
-    public List<Student> getStudentsByAgeRange(
-            @RequestParam int min,
-            @RequestParam int max) {
-        return studentService.getStudentsByAgeRange(min, max);
+
+
+    @GetMapping("/count")
+    public ResponseEntity<Long> getTotalStudentsCount() {
+        return ResponseEntity.ok(studentService.getTotalStudentsCount());
+    }
+
+    @GetMapping("/average-age")
+    public ResponseEntity<Double> getAverageAge() {
+        return ResponseEntity.ok(studentService.getAverageAge());
+    }
+
+    @GetMapping("/last-five")
+    public ResponseEntity<List<Student>> getLastFiveStudents() {
+        return ResponseEntity.ok(studentService.getLastFiveStudents());
     }
 
 }
+
+
+

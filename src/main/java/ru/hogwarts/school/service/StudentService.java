@@ -15,4 +15,8 @@ public interface StudentService {
 
     List<Student> getStudentsByAgeRange(int min, int max);
 
+    long getTotalStudentsCount();
+    Double getAverageAge();
+    List<Student> getLastFiveStudents();
+
 }
