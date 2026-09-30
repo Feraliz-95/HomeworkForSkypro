@@ -1,0 +1,4 @@
+
+databaseChangeLog:
+  - include:
+      file: db/changelog/lesson-three-add-indexes.yaml
