@@ -14,4 +14,10 @@ public interface FacultyService {
     void deleteFaculty(long id);
 
     List<Faculty> searchFaculties(String q);
+
+    String getLongestFacultyName();
+
+
+
+
 }
