@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import ru.hogwarts.school.model.Faculty;
 import ru.hogwarts.school.repository.FacultyRepository;
 
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -94,5 +95,15 @@ public class FacultyServiceImpl implements FacultyService{
                 query, query);
         logger.info("Search completed for query='{}', found {} faculties", query, result.size());
         return result;
+    }
+
+    @Override
+    public String getLongestFacultyName() {
+        List<Faculty> faculties = facultyRepository.findAll();
+        if (faculties.isEmpty()) return "";
+        return faculties.stream()
+                .map(Faculty::getName)
+                .max(Comparator.comparingInt(String::length))
+                .orElse("");
     }
 }

@@ -4,7 +4,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.hogwarts.school.model.Faculty;
 import ru.hogwarts.school.service.FacultyService;
-import java.util.List;
 
 @RestController
 @RequestMapping("faculty")
@@ -15,14 +14,14 @@ public class FacultyController {
         this.facultyService = facultyService;
     }
 
-    @GetMapping("{id}")
 
+    @GetMapping("{id}")
     public ResponseEntity<Faculty> getFaculty(@PathVariable Long id) {
         Faculty faculty = facultyService.findFaculty(id);
         if (faculty == null) {
             return ResponseEntity.notFound().build();
         }
-       return ResponseEntity.ok(faculty);
+        return ResponseEntity.ok(faculty);
     }
 
     @PostMapping
@@ -30,7 +29,7 @@ public class FacultyController {
         return facultyService.addFaculty(faculty);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<Faculty> editFaculty(@PathVariable Long id, @RequestBody Faculty faculty) {
         Faculty foundFaculty = facultyService.editFaculty(id, faculty);
         if (foundFaculty == null) {
@@ -45,9 +44,10 @@ public class FacultyController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/search")
-    public List<Faculty> searchFaculties(@RequestParam String q) {
-        return facultyService.searchFaculties(q);
+    @GetMapping("/longest-faculty-name")
+    public ResponseEntity<String> getLongestFacultyName() {
+        return ResponseEntity.ok(facultyService.getLongestFacultyName());
     }
 
 }
+
