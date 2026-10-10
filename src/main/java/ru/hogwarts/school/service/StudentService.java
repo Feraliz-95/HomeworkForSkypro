@@ -20,7 +20,7 @@ public interface StudentService {
 
     List<String> getStudentNamesStartingWithA();
 
-
+    List<Student> getAllStudents();
 
 
 
